@@ -12,37 +12,44 @@ stages:
   - job: Build_FirstJob
     steps:
     - bash: echo $(env)First Job
+    - bash: echo $(env)
+    - bash: echo $(Build.SourceBranchName)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.SourcesDirectory)
+    - bash: echo $(Build.ArtifactStaging)
+    - bash: echo $(System.DefaultWorkingDirectory)
 
-  - job: Build_SecondJob
-    steps:
-    - bash: echo $(env)Second Job
+#   - job: Build_SecondJob
+#     steps:
+#     - bash: echo $(env)Second Job
 
 
-- stage: Dev
-  variables:
-    env: Dev
-  dependsOn: Build
-  jobs:
-  - job: DevDeployJob
-    steps:
-    - bash: echo $(env)Deploy job!
+# # - stage: Dev
+# #   variables:
+# #     env: Dev
+# #   dependsOn: Build
+# #   jobs:
+# #   - job: DevDeployJob
+# #     steps:
+# #     - bash: echo $(env)Deploy job!
 
-- stage: QA
-  variables:
-    env: QA
-  dependsOn: Build
-  jobs:
-  - job: QADeployJob
-    steps:
-    - bash: echo $(env)Deploy Job!
+# # - stage: QA
+# #   variables:
+# #     env: QA
+# #   dependsOn: Build
+# #   jobs:
+# #   - job: QADeployJob
+# #     steps:
+# #     - bash: echo $(env)Deploy Job!
 
-- stage: PROD
-  variables:
-    env: PROD
-  dependsOn:
-  - QA
-  - DEV
-  jobs:
-  - job: PRODJob
-    steps:
-    - bash: echo $(env)Deploy job!
+# # - stage: PROD
+# #   variables:
+# #     env: PROD
+# #   dependsOn:
+# #   - QA
+#   - DEV
+#   jobs:
+#   - job: PRODJob
+#     steps:
+#     - bash: echo $(env)Deploy job!
