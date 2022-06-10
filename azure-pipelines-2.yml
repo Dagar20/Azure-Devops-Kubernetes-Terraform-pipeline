@@ -19,7 +19,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'abhishekDagar008-docker'
-        repository: 'Dagar20/currency-exchange-devops'
+        repository: 'test-docker/currency-exchange-deops'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
