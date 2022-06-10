@@ -7,13 +7,13 @@ pool:
 stages:
 - stage: Build
   jobs:
-  - job: Build-FirstJob
+  - job: Build_FirstJob
     steps:
-    - bash: echo First Job- BUILD STAGE!
+    - bash: echo First Job_BUILD STAGE!
 
-  - job: Build-SecondJob
+  - job: Build_SecondJob
     steps:
-    - bash: echo Second Job- BUILD STAGE!
+    - bash: echo Second Job_BUILD STAGE!
 
 
 - stage: Dev
