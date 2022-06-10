@@ -6,35 +6,43 @@ pool:
 
 stages:
 - stage: Build
+  variables:
+    env: build 
   jobs:
   - job: Build_FirstJob
     steps:
-    - bash: echo First Job_BUILD STAGE!
+    - bash: echo $(env)First Job
 
   - job: Build_SecondJob
     steps:
-    - bash: echo Second Job_BUILD STAGE!
+    - bash: echo $(env)Second Job
 
 
 - stage: Dev
+  variables:
+    env: Dev
   dependsOn: Build
   jobs:
   - job: DevDeployJob
     steps:
-    - bash: echo Dev Deploy job!
+    - bash: echo $(env)Deploy job!
 
 - stage: QA
+  variables:
+    env: QA
   dependsOn: Build
   jobs:
   - job: QADeployJob
     steps:
-    - bash: echo QA Deploy Job!
+    - bash: echo $(env)Deploy Job!
 
 - stage: PROD
+  variables:
+    env: PROD
   dependsOn:
   - QA
   - DEV
   jobs:
-  - job: FirstJob
+  - job: PRODJob
     steps:
-    - bash: echo PROD Deploy job!
+    - bash: echo $(env)Deploy job!
